@@ -1,11 +1,14 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Cash Coalition Survey</h1>
-  <p>Your participation in this survey is voluntary and your answers are confidential and will not- in any way- affect your eligibility to receive services from Community Action Partnership for Dutchess County. You do not have to respond to any questions that you are uncomfortable with. We appreciate you taking the time to help us!</p>
-  <h2>Dynamic Content</h2>
-  <p>The database has the following record counts:</p>
-    <strong>Question 1:</strong> {{ question_one }}<br>
-    <!--<strong>Choices 1:</strong> {{ choices_one }}-->
-    <input type="radio" name="gender" value="male"> {{ choices_one }}<br>
+<h1>Cash Coalition Survey</h1>
+<p>Your participation in this survey is voluntary and your answers are confidential and will not- in any way- affect your eligibility to receive services from Community Action Partnership for Dutchess County. You do not have to respond to any questions that you are uncomfortable with. We appreciate you taking the time to help us!</p>
+<h2>Dynamic Content</h2>
+<p>The database has the following record counts:</p>
+<strong>Question 1:</strong> {{ question_one }}<br>
+<!--<strong>Choices 1:</strong> {{ choices_one }}-->
+  {% for i in choice %}
+    <input type="radio">{{choice[i]}}<br />
+  {% endfor %}
+<input type="radio" name="gender" value="male"> {{ choices_one }}<br>
 {% endblock %}
