@@ -8,18 +8,17 @@ def index(request):
     """View function for home page of site."""
     # Generate counts of some of the main objects
     question_one = Question.objects.get(qid=1)
-    min_one = Choice.objects.filter(qid=1).order_by('-cid').first().cid
-    max_one = Choice.objects.filter(qid=1).order_by('cid').first().cid
+    choice_list = Choice.objects.filter(qid=1).order_by('-cid')
+   
     choice = []
 
-    for i in range(int(min_one), int(max_one)):
-        choice.append(Choice.objects.get(qid=1, cid=i))
+    for i in choice_list:
+        choice.append(i.choice_text)
 
     context = {
         'question_one': question_one,
         'choice': choice,
-        'min_one': min_one,
-        'max_one': max_one,
+       
     }
 
     # Render the HTML template index.html with the data in the context variable
