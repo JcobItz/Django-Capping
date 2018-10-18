@@ -8,12 +8,15 @@ def index(request):
     """View function for home page of site."""
     # Generate counts of some of the main objects
     question_one = Question.objects.get(qid=1)
-    choices_one = Choice.objects.filter(qid=1)
+    choice =[]
+    for i in range(8,11):
+        choice.append(Choice.objects.filter(qid=1, cid=i))
+
 
 
     context = {
         'question_one': question_one,
-        'choices_one': choices_one,
+        'choice': choice,
     }
 
     # Render the HTML template index.html with the data in the context variable
