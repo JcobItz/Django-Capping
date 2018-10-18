@@ -8,8 +8,8 @@ class Survey(models.Model):
         return self.sid
 
 
-class Prompt(models.Model):
-    pid = models.AutoField(primary_key=True)
+class Question(models.Model):
+    qid = models.AutoField(primary_key=True)
     sid = models.ForeignKey(Survey, on_delete=models.CASCADE)
     question_text = models.CharField(max_length=200)
 
@@ -19,7 +19,7 @@ class Prompt(models.Model):
 
 class Choice(models.Model):
     cid = models.AutoField(primary_key=True)
-    pid = models.ForeignKey(Prompt, on_delete=models.CASCADE)
+    qid = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=200)
 
     def __str__(self):
@@ -28,7 +28,7 @@ class Choice(models.Model):
 
 class Response(models.Model):
     uid = models.AutoField(primary_key=True)
-    pid = models.ForeignKey(Prompt, on_delete=models.CASCADE)
+    qid = models.ForeignKey(Question, on_delete=models.CASCADE)
     response_text = models.CharField(max_length=200)
 
     def __str__(self):

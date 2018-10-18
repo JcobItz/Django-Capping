@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import Survey, Prompt, Choice, Response
+from .models import Survey, Question, Choice, Response
 from django.contrib.auth.models import Group
 
 # Register your models here
 admin.site.register(Survey)
-admin.site.register(Prompt)
+admin.site.register(Question)
 admin.site.register(Choice)
 admin.site.register(Response)
 
