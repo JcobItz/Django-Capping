@@ -8,7 +8,6 @@
 <strong>Question 1:</strong> {{ question_one }}<br>
 <!--<strong>Choices 1:</strong> {{ choices_one }}-->
   {% for i in choice %}
-    <input type="radio">{{choice[i]}}<br />
+    <input type="radio" name="question_one">{{i}}<br />
   {% endfor %}
-<input type="radio" name="gender" value="male"> {{ choices_one }}<br>
 {% endblock %}
