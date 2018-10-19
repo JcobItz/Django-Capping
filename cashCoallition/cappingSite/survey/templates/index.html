@@ -1,22 +1,13 @@
 {% extends "base_generic.html" %}
-
 {% block content %}
 <h1>Cash Coalition Survey</h1>
 <p>Your participation in this survey is voluntary and your answers are confidential and will not- in any way- affect your eligibility to receive services from Community Action Partnership for Dutchess County. You do not have to respond to any questions that you are uncomfortable with. We appreciate you taking the time to help us!</p>
-<h2>Dynamic Content</h2>
-<p>The database has the following record counts:</p>
 <strong>Question {{question_num}}:</strong> {{ question }}<br>
-<!--<strong>Choices 1:</strong> {{ choices_one }}-->
   {% for i in choice %}
-    <input type="radio" name="question_one">{{i}}<br />
+    <input type="radio" name="question">{{i}}<br />
   {% endfor %}
 
-<!--<a href="" class="previous">&laquo; Previous</a>-->
-<!--<a href="" class="next">Next &raquo;</a>-->
-
-<form method='get'>
-    <input type="submit" value="&laquo; Previous" name="previous" class="previous"/>
-
-    <input type="submit" value="Next &raquo;" name="next" class="next"/>
-</form>
+<a href="{% url 'index' question_num=question_num|add:-1 %}" >Previous</a>
+<a href="{% url 'index' question_num=question_num|add:1 %}" >Next</a>
+<!--<a href="{% if question_num > 1 %}{% url 'index' question_num=question_num|add:-1 %}{% else %}{% url 'index' question_num=1 %}{% endif %}" >Previous</a>-->
 {% endblock %}

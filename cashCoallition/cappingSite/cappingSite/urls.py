@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from survey import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,13 +25,16 @@ urlpatterns = [
 # Use include() to add paths from the catalog application
 from django.conf.urls import include
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+from django.views.generic import RedirectView
 
 urlpatterns += [
     path('survey/', include('survey.urls')),
+    path('about/', views.about, name='about'),
 ]
 
-#Add URL maps to redirect the base URL to our application
-from django.views.generic import RedirectView
+# Add URL maps to redirect the base URL to our application
 urlpatterns += [
     path('', RedirectView.as_view(url='/survey/')),
 ]
