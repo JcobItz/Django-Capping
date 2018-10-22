@@ -3,7 +3,7 @@ from .models import Survey, Question, Choice, Response
 from django.contrib.auth.models import Group
 
 # Register your models here
-admin.site.register(Survey)
+# admin.site.register(Survey) -- not needed for Linda's purposes...
 admin.site.register(Question)
 admin.site.register(Choice)
 admin.site.register(Response)
