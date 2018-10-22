@@ -12,6 +12,7 @@ class Question(models.Model):
     qid = models.AutoField(primary_key=True)
     sid = models.ForeignKey(Survey, on_delete=models.CASCADE)
     question_text = models.CharField(max_length=200)
+    is_multiple_choice = models.BooleanField(default=True)
 
     def __str__(self):
         return self.question_text

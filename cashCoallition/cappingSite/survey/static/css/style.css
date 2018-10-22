@@ -9,3 +9,11 @@ a {
     padding: 0;
     list-style: none;
 }
+
+.choices {
+position: relative;
+}
+
+.questions {
+position: absolute;
+}

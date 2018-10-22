@@ -3,11 +3,47 @@
 <h1>Cash Coalition Survey</h1>
 <p>Your participation in this survey is voluntary and your answers are confidential and will not- in any way- affect your eligibility to receive services from Community Action Partnership for Dutchess County. You do not have to respond to any questions that you are uncomfortable with. We appreciate you taking the time to help us!</p>
 <strong>Question {{question_num}}:</strong> {{ question }}<br>
-  {% for i in choice %}
-    <input type="radio" name="question">{{i}}<br />
-  {% endfor %}
 
-<a href="{% url 'index' question_num=question_num|add:-1 %}" >Previous</a>
-<a href="{% url 'index' question_num=question_num|add:1 %}" >Next</a>
-<!--<a href="{% if question_num > 1 %}{% url 'index' question_num=question_num|add:-1 %}{% else %}{% url 'index' question_num=1 %}{% endif %}" >Previous</a>-->
+  {% if is_multiple_choice == True %}
+    {% for i in choice %}
+      <input type="radio" name="question">{{i}}<br/>
+    {% endfor %}
+  {% else %}
+      <form>
+      Answer:<br>
+      <input type="text" name="short_answer"><br>
+      </form>
+  {% endif %}
+
+<!--<a href="{% url 'index' question_num=question_num|add:-1 %}" >Previous</a>-->
+<!--<a href="{% url 'index' question_num=question_num|add:1 %}" >Next</a>-->
+
+<a class="btn-primary" href="
+  {% if question_num > 1 %}
+    {% url 'index' question_num=question_num|add:-1 %}
+  {% else %}
+    {% url 'index' question_num=1 %}
+  {% endif %}"
+>Previous</a>
+
+<a class="btn-primary" id="next" href="
+  {% if question_num < question_count %}
+    {% url 'index' question_num=question_num|add:1 %}
+  {% else %}
+    {% url 'index' question_num=question_num %}
+  {% endif %}"
+>Next</a>
+
+<p>Question {{ question_num }} of {{ question_count }}</p>
+
+{% if question_num == question_count %}
+  <script>
+  function hideNext() {
+      var nextBtn = document.getElementById("next");
+          nextBtn.style.display = "none";
+          console.log("hiding next button");
+  }
+  hideNext();
+  </script>
+{% endif %}
 {% endblock %}
