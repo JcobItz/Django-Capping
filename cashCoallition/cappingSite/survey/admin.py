@@ -8,7 +8,7 @@ admin.site.register(Question)
 admin.site.register(Choice)
 admin.site.register(Response)
 
-#Customize site header
+# Customize site header
 admin.site.site_header = 'Cash Coalition Dashboard'
 
 # Text to put at the end of each page's <title>.

@@ -11,20 +11,17 @@
   {% else %}
       <form>
       Answer:<br>
-      <input type="text" name="short_answer"><br>
+        <textarea rows="4" cols="50"></textarea>
       </form>
   {% endif %}
 
-<!--<a href="{% url 'index' question_num=question_num|add:-1 %}" >Previous</a>-->
-<!--<a href="{% url 'index' question_num=question_num|add:1 %}" >Next</a>-->
-
-<a class="btn-primary" href="
+<a class="btn-primary" id="previous" href="
   {% if question_num > 1 %}
     {% url 'index' question_num=question_num|add:-1 %}
   {% else %}
     {% url 'index' question_num=1 %}
   {% endif %}"
->Previous</a>
+>&laquo; Previous</a>
 
 <a class="btn-primary" id="next" href="
   {% if question_num < question_count %}
@@ -32,10 +29,11 @@
   {% else %}
     {% url 'index' question_num=question_num %}
   {% endif %}"
->Next</a>
+>Next &raquo;</a>
 
 <p>Question {{ question_num }} of {{ question_count }}</p>
 
+<!--hides the next button if user is on the last question-->
 {% if question_num == question_count %}
   <script>
   function hideNext() {
@@ -44,6 +42,18 @@
           console.log("hiding next button");
   }
   hideNext();
+  </script>
+{% endif %}
+
+<!--hides the previous button if user is on the last question-->
+{% if question_num == 1 %}
+  <script>
+  function hidePrevious() {
+      var prevBtn = document.getElementById("previous");
+          prevBtn.style.display = "none";
+          console.log("hiding previous button");
+  }
+  hidePrevious();
   </script>
 {% endif %}
 {% endblock %}
