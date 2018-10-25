@@ -3,7 +3,6 @@ from django.shortcuts import render
 # Create your views here.
 from survey.models import Survey, Question, Choice, Response
 from django.shortcuts import render
-from django.http import Http404
 
 
 def index(request, question_num=1):

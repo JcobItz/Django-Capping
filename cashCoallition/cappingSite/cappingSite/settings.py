@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'survey.apps.SurveyConfig',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -135,5 +136,4 @@ USE_TZ = True
 STATIC_URL = '/staticfiles/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "staticfiles"),
-    '/css/',
 ]

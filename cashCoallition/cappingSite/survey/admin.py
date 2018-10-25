@@ -1,12 +1,10 @@
 from django.contrib import admin
 from .models import Survey, Question, Choice, Response
 from django.contrib.auth.models import Group
+from import_export.admin import ImportExportModelAdmin
 
 # Register your models here
 # admin.site.register(Survey) -- not needed for Linda's purposes...
-admin.site.register(Question)
-admin.site.register(Choice)
-admin.site.register(Response)
 
 # Customize site header
 admin.site.site_header = 'Cash Coalition Dashboard'
@@ -16,3 +14,42 @@ admin.site.site_title = 'Cash Coalition'
 
 # Remove groups
 admin.site.unregister(Group)
+
+
+class ChoiceTabularInline(admin.TabularInline):
+    model = Choice
+
+    class Media:
+        js = ('//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',
+              '/staticfiles/admin/js/assets_admin.js',
+              )
+#   js to hide choices inline
+
+
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ['question_text', 'is_multiple_choice']
+    search_fields = ['question_text']
+    exclude = ('sid',)
+    inlines = [ChoiceTabularInline]
+
+
+admin.site.register(Question, QuestionAdmin)
+
+
+class ChoiceAdmin(admin.ModelAdmin):
+    list_display = ['choice_text', 'qid']
+    list_filter = ['qid']
+    search_fields = ['choice_text']
+
+
+admin.site.register(Choice, ChoiceAdmin)
+
+
+class ResponseAdmin(ImportExportModelAdmin):
+    list_display = ['qid', 'response_text']
+
+
+admin.site.register(Response, ResponseAdmin)
+
+
+
