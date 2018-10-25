@@ -1,10 +1,10 @@
 {% extends "base_generic.html" %}
 {% block content %}
+
 <h1>Cash Coalition Survey</h1>
 <p>Your participation in this survey is voluntary and your answers are confidential and will not- in any way- affect your eligibility to receive services from Community Action Partnership for Dutchess County. You do not have to respond to any questions that you are uncomfortable with. We appreciate you taking the time to help us!</p>
 <strong>Question {{question_num}}:</strong> {{ question }}<br>
-
-  {% if is_multiple_choice == True %}
+{% if is_multiple_choice == True %}
     {% for i in choice %}
       <input type="radio" name="question">{{i}}<br/>
     {% endfor %}
@@ -36,22 +36,18 @@
 <!--hides the next button if user is on the last question-->
 {% if question_num == question_count %}
   <script>
-  function hideNext() {
-      var nextBtn = document.getElementById("next");
-          nextBtn.style.display = "none";
-  }
-  hideNext();
+      $(document).ready(function () {
+          $("#next").hide();
+      });
   </script>
 {% endif %}
 
 <!--hides the previous button if user is on the last question-->
 {% if question_num == 1 %}
   <script>
-  function hidePrevious() {
-      var prevBtn = document.getElementById("previous");
-          prevBtn.style.display = "none";
-  }
-  hidePrevious();
+      $(document).ready(function () {
+          $("#previous").hide();
+      });
   </script>
 {% endif %}
 {% endblock %}
