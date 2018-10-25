@@ -21,6 +21,8 @@ def index(request, question_num=1):
     print(is_multiple_choice)
     # Array to store choices
     choice = []
+    responses = [question_count]
+    
     # Loops through choices
     for i in choice_list:
         choice.append(i.choice_text)
@@ -31,6 +33,7 @@ def index(request, question_num=1):
         'question_num': question_num,
         'question_count': question_count,
         'is_multiple_choice': is_multiple_choice,
+        'responses': responses,
     }
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
