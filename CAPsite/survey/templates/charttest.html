@@ -1,0 +1,100 @@
+{% load staticfiles %}
+<html>
+<head>
+    <title>django-chartjs line chart demo</title>
+    <!--[if lte IE 8]>
+        <script src="{% static 'js/excanvas.js' %}"></script>
+    <![endif]-->
+    <script src="{% static 'admin/js/echart.js' %}"></script>
+    <script src="{% static 'admin/js/jquery.min.js' %}"></script>
+</head>
+
+
+<body>
+    <!-- prepare a DOM container with width and height -->
+    <script>
+        questions = {{ questions | safe }};
+        qids = {{ qids | safe }};
+
+        function print_id() {
+            var s = document.getElementById('question_select');
+            var text = s.options[s.selectedIndex].value;
+
+            for (var i = 0; i < questions.length; i++) {
+                if (questions[i] == text) {
+                    
+                    var inputElem = document.createElement('input');
+                    inputElem.type = 'hidden';
+                    inputElem.name = 'csrfmiddlewaretoken';
+                    inputElem.value = '{{ csrf_token }}';
+                    document.getElementById('q_select_form').appendChild(inputElem);
+                   document.getElementById('q_select_form').action = '/admin/charts/' + qids[i] + '/';
+                   document.getElementById('q_select_form').submit();
+               }
+            }
+        }
+        $(document).ready(function () {
+            var URL = $(location).attr("href");
+            var num = URL.substr(URL.length - 2, 1);
+            var q = parseInt(num, 10);
+            for (var i = 0; i < questions.length; i++) {
+                if (qids[i] == q) {
+
+                    $('#question_select').val(questions[i]);
+                }
+            }
+        });
+
+
+    </script>
+    <div class="row">
+        <form id="q_select_form" action="/admin/charts/" method="post">
+            <select id="question_select" onchange="print_id()">
+                
+                {% for i in questions %}
+                <option value="{{i}}">{{i}}</option>
+                {% endfor %}
+
+            </select>
+            
+        </form>
+    </div>
+    
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // based on prepared DOM, initialize echarts instance
+        var myChart = echarts.init(document.getElementById('main'));
+        var c = {{ choices|safe }};
+        var d = {{ freq| safe }};
+        var choices = new Array();
+
+        for (var i = 0; i < c.length; i++) {
+            choices.push({ value: d[i], name: c[i] });
+        }
+        
+       
+
+        // specify chart configuration item and data
+    var option = {
+        
+            tooltip: {},
+            legend: {
+                data: c
+            },
+            title: {
+                text: 'Question {{q}} results.'
+            },
+            
+           
+            series: [{
+                
+                type: 'pie',
+                data: choices
+            }]
+        };
+
+        // use configuration item and data specified to show chart
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<div id="webpage">
+<h1>Dutchess Cap Survey</h1>
+    <div class="card">
+        <div class="question"><strong id="quest">Question {{question_num}}: </strong>{{question}}<br></div>
+        <form id="q_form" action="/survey/{{question_num}}/" method="POST">
+            {% csrf_token %}
+
+
+            {% if is_multiple_choice == True %}
+            {% for i in choice %}
+            <div class="radio">
+                <input type="radio" id="radio-2{{i}}"name="response_text" value="{{i}}" unchecked>
+                <label for="radio-2{{i}}" class="radio-label">{{i}}</label>
+            </div>
+            {% endfor %}
+
+            {% else %}
+
+            {{form}}
+
+            {% endif %}
+
+        </form>
+        <div class="theButtons">
+        <a class="ourButtons" id="previous" href="
+
+           {% if question_num > 1 %}
+            {% url 'index' question_num=question_num|add:-1 %}
+            {% else %}
+            {% url 'index' question_num=1 %}
+            {% endif %}"
+            >&laquo; Previous
+        </a>
+
+
+        <a id="next" class="ourButtons" href="javascript:document.getElementById('q_form').submit();">Next &raquo;</a>
+        </div>
+        <div class="questionof"><p>Question {{ question_num }} of {{ question_count }}</p></div>
+        <!--hides the next button if user is on the last question-->
+        {% if question_num == question_count %}
+        <script>
+            //$(document).ready(function () {
+           //    $("#next").hide();
+          //  });
+        </script>
+        {% endif %}
+
+        <!--hides the previous button if user is on the last question-->
+        {% if question_num == 1 %}
+        <script>
+            //$(document).ready(function () {
+           //     $("#previous").hide();
+          //  });
+        </script>
+        {% endif %}
+        
+    </div>
+
+{% endblock %}
+    </div>
