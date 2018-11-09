@@ -3,7 +3,11 @@ a {
     display: inline-block;
     padding: 8px 16px;
 }
-
+.webpage
+{
+     margin: 0 auto;
+     width: 100px;
+}
 h1 {
     text-align: center;
     padding-bottom: 50px;
@@ -17,29 +21,21 @@ h1 {
 }
 
 html, body {
-    margin: 0; /* remove default margin */
-    padding: 0; /* remove default padding */
-    width: 100%; /* take full browser width */
-    height: 100%; /* take full browser height*/
+    height: 100%;
 }
 
-ght: 100%; /* <--now this takes full browser dimension  */
+html {
+    display: table;
+    margin: auto;
 }
 
-.screen {
-    margin: 0;
-    position: absolute;
-    width: 100% /* BenM mentioned this in answer*/
-    height: 100%; /* take full browser height */
-    left: 0;
-    top: 0;
+body {
+    display: table-cell;
+    vertical-align: middle;
 }
-
-    .screen .main {
-        width: 100%; /* <--now this takes full browser dimension  */
-        height: 100%; /* <--now this takes full browser dimension  */
-    }
-
+#logo {
+    position: relative;
+}
 ------------------------------------------------------------- */
 /* Animation from Animate.css
  ------------------------------------------------------------- */
@@ -134,13 +130,28 @@ body {
     animation: cardEnter 0.75s ease-in-out 0.5s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
-    max-width: 500px;
+    max-width: 1000px;
     padding: 20px;
     background-color: #FDFFF9;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
     margin: 20px auto;
     opacity: 0;
     width: 400px;
+}
+
+.chartcard {
+    -webkit-animation: cardEnter 0.75s ease-in-out 0.5s;
+    animation: cardEnter 0.75s ease-in-out 0.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    max-width: 1000px;
+    padding: 20px;
+    background-color: #FDFFF9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    margin: 20px auto;
+    opacity: 0;
+    width: 600px;
+    text-align: center;
 }
 
 /* Individual Controls

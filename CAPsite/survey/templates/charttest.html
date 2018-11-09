@@ -1,7 +1,9 @@
 {% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 <html>
 <head>
-    <title>django-chartjs line chart demo</title>
+    <title>CAP Charts</title>
     <!--[if lte IE 8]>
         <script src="{% static 'js/excanvas.js' %}"></script>
     <![endif]-->
@@ -11,7 +13,11 @@
 
 
 <body>
+<div id="webpage">
+    <h1>Dutchess Cap Charts</h1>
+    <div class="chartcard">
     <!-- prepare a DOM container with width and height -->
+    <p>Which question would you like to display a graph for?</p>
     <script>
         questions = {{ questions | safe }};
         qids = {{ qids | safe }};
@@ -81,11 +87,10 @@
             legend: {
                 data: c
             },
-            title: {
-                text: 'Question {{q}} results.'
-            },
-            
-           
+            <!--Is this title needed?-->
+            <!--title: {-->
+                <!--text: 'Question {{q}} results'-->
+            <!--},-->
             series: [{
                 
                 type: 'pie',
@@ -96,5 +101,8 @@
         // use configuration item and data specified to show chart
         myChart.setOption(option);
     </script>
+<a href="/admin/">Return to CAP Administration</a>
+    </div>
+</div>
 </body>
 </html>

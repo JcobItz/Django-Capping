@@ -18,21 +18,19 @@ questions =[]
 for x in Question.objects.all():
     questions.append(x.qid)
 
+
 def index(request, question_num=questions[0]):
     """View function for home page of site."""
     # Keeps track of what question user is on
     # Counts total number of questions stored in database
     # Generate counts of some of the main objects
-    
-    responses = {}
-    
-    
+
     if 'userID' not in request.session:
         user = 0
         request.session['userID'] = 0
         for r in Response.objects.all():
             print("loop")
-            if(r.userID >= user):
+            if r.userID >= user:
                 user+=1
                 request.session['userID'] = user
     
@@ -42,18 +40,14 @@ def index(request, question_num=questions[0]):
     if request.method == 'POST':
         print("is POST")
         form = ResponseForm(question.qid, request.POST)
-
        
         if form.is_valid():
             print("valid")
            
-            resp = Response(response_text = form.cleaned_data['response_text'], userID = request.session['userID'], qid = question)
-            
-           
-            
+            resp = Response(response_text = form.cleaned_data['response_text'], userID = request.session['userID'], qid=question)
+
             resp.save()
             next = question_num+1
-            #response.save()
             if question_num == question_count:
                 try:
 
@@ -66,8 +60,7 @@ def index(request, question_num=questions[0]):
     else:
 
         form = ResponseForm(question.qid)
-        
-        
+
         choice_list = Choice.objects.filter(qid=question_num).order_by('cid')
    
         # for debugging purposes
@@ -77,11 +70,7 @@ def index(request, question_num=questions[0]):
         #print(request.session['userID'])
         # Array to store choices
         choice = []
-    
 
-    
-
-    
         # Loops through choices
         for i in choice_list:
             choice.append(i.choice_text)

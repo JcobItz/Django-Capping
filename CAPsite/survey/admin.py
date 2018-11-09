@@ -46,7 +46,15 @@ admin.site.register(Choice, ChoiceAdmin)
 
 
 class ResponseAdmin(ImportExportModelAdmin):
-    list_display = ['qid', 'response_text']
+    list_display = ['qid', 'response_text', 'userID']
+
+    class Media:
+        js = ('http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',
+              '/staticfiles/admin/js/chartadmin.js',
+              )
+
+
+#   js to add chart link
 
 
 admin.site.register(Response, ResponseAdmin)

@@ -41,18 +41,18 @@
         <!--hides the next button if user is on the last question-->
         {% if question_num == question_count %}
         <script>
-            //$(document).ready(function () {
-           //    $("#next").hide();
-          //  });
+            $(document).ready(function () {
+               $("#next").hide();
+            });
         </script>
         {% endif %}
 
         <!--hides the previous button if user is on the last question-->
         {% if question_num == 1 %}
         <script>
-            //$(document).ready(function () {
-           //     $("#previous").hide();
-          //  });
+            $(document).ready(function () {
+                $("#previous").hide();
+            });
         </script>
         {% endif %}
         
