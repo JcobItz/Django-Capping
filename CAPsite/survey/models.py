@@ -36,10 +36,10 @@ class Choice(models.Model):
 
 class Response(models.Model):
     rid = models.AutoField(primary_key=True, verbose_name='Response ID')
-    userID = models.IntegerField(default=1)
+    userID = models.IntegerField(default=1, verbose_name='User ID')
     qid = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name='Question ID')
     response_text = models.CharField(max_length=200, verbose_name='Response')
-    timestamp = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(auto_now_add=True, verbose_name='Timestamp')
 
     class Meta:
         verbose_name_plural = "3. Responses"
