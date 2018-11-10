@@ -39,6 +39,7 @@ class Response(models.Model):
     userID = models.IntegerField(default=1)
     qid = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name='Question ID')
     response_text = models.CharField(max_length=200, verbose_name='Response')
+    timestamp = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name_plural = "3. Responses"
