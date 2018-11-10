@@ -47,6 +47,7 @@ admin.site.register(Choice, ChoiceAdmin)
 
 class ResponseAdmin(ImportExportModelAdmin):
     list_display = ['qid', 'response_text', 'userID', 'timestamp']
+    list_filter = ['qid',]
 
     class Media:
         js = ('http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',
