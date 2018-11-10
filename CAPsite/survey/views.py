@@ -43,10 +43,16 @@ def index(request, question_num=questions[0]):
        
         if form.is_valid():
             print("valid")
-           
-            resp = Response(response_text = form.cleaned_data['response_text'], userID = request.session['userID'], qid=question)
-
-            resp.save()
+            alreadyExists = False
+            for r in Response.objects.filter(userID = request.session['userID']):
+                if r.qid == question:
+                    alreadyExists = True
+                    r.response_text = form.cleaned_data['response_text']
+                    r.save()
+                    
+            if alreadyExists == False:
+                resp = Response(response_text = form.cleaned_data['response_text'], userID = request.session['userID'], qid=question)
+                resp.save()
             next = question_num+1
             if question_num == question_count:
                 try:
