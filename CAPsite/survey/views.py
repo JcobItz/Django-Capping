@@ -36,7 +36,6 @@ def index(request, question_num=questions[0]):
     
     question = Question.objects.get(qid=question_num)
     is_multiple_choice = Question.objects.get(qid=question_num).is_multiple_choice
-    allow_multiple = Question.objects.get(qid=question_num).allow_multiple
     question_count = Question.objects.count()
     if request.method == 'POST':
         print("is POST")
@@ -89,7 +88,8 @@ def index(request, question_num=questions[0]):
             'question_count': question_count,
             'is_multiple_choice': is_multiple_choice,
             'form': form,
-            'allow_multiple': allow_multiple,
+       
+        
         }
    
     # Render the HTML template index.html with the data in the context variable
