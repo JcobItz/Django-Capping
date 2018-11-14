@@ -13,7 +13,7 @@ class Question(models.Model):
     sid = models.ForeignKey(Survey, on_delete=models.CASCADE, default=1, verbose_name='Survey ID')
     question_text = models.CharField(max_length=200, verbose_name='Question')
     is_multiple_choice = models.BooleanField(default=True, verbose_name='Is the question multiple choice?')
-    # verbose_name_plural exists to order models in admin dashboard
+    allow_multiple = models.BooleanField(default=False, verbose_name='Allow multiple options to be selected?')
 
     class Meta:
         verbose_name_plural = "1. Questions"
