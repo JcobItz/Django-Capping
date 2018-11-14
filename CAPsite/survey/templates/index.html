@@ -8,7 +8,7 @@
             {% csrf_token %}
 
 
-            {% if is_multiple_choice == True %}
+            {% if is_multiple_choice == True and allow_multiple == False %}
             {% for i in choice %}
             <div class="radio">
                 <input type="radio" id="radio-2{{i}}"name="response_text" value="{{i}}" unchecked>
@@ -16,6 +16,13 @@
             </div>
             {% endfor %}
 
+            {% elif is_multiple_choice == True and allow_multiple == True %}
+            {% for i in choice %}
+            <div class="radio">
+                <input type="radio" id="radio-3{{i}}"name="response_text{{i}}" value="{{i}}" unchecked>
+                <label for="radio-3{{i}}" class="radio-label">{{i}}</label>
+            </div>
+            {% endfor %}
             {% else %}
 
             {{form}}
