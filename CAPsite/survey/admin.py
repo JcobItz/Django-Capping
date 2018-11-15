@@ -60,6 +60,7 @@ class ResponseAdmin(ImportExportModelAdmin):
 
 admin.site.register(Response, ResponseAdmin)
 
-
+def admin(request):
+    return render(request, 'admin/base.html', {})
 
 

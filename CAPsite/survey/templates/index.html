@@ -4,7 +4,7 @@
 <h1>Dutchess Cap Survey</h1>
     <div class="card">
         <div class="question"><strong id="quest">Question {{question_num}}: </strong>{{question}}<br></div>
-        <form id="q_form" action="/survey/{{question_num}}/" method="POST">
+        <form id="q_form" action="/survey/{{question_num}}/" method="POST" onsubmit="update_session()">
             {% csrf_token %}
 
 
@@ -52,6 +52,19 @@
         >Next &raquo;</a>
 
         </div>
+        <script>
+            function update_session() {
+                var num_selected = $(":checkbox:checked").length;
+                $.ajax({
+                    url: '/ajax/update_session/',
+                    data: {
+                        'num_selected': num_selected
+                    },
+                    dataType: 'json'
+                    
+                });
+            }
+        </script>
         <div class="questionof"><p>Question {{ question_num }} of {{ question_count }}</p></div>
         <!--renames the next button if user is on the last question-->
         {% if question_num == question_count %}

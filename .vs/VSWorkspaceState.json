@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\CAPsite",
+    "\\CAPsite\\CAPsite",
+    "\\CAPsite\\staticfiles",
+    "\\CAPsite\\staticfiles\\admin",
+    "\\CAPsite\\staticfiles\\admin\\css",
+    "\\CAPsite\\survey",
+    "\\CAPsite\\survey\\templates",
+    "\\CAPsite\\templates",
+    "\\CAPsite\\templates\\admin"
+  ],
+  "SelectedNode": "\\CAPsite\\survey\\urls.py",
+  "PreviewInSolutionExplorer": false
+}

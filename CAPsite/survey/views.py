@@ -1,12 +1,12 @@
 from django.shortcuts import render, HttpResponseRedirect, HttpResponse
 from django import forms
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseNotAllowed
 from django.core import serializers
 
 # Create your views here.
 from .models import Survey, Question, Choice, Response
 
-from .forms import ResponseForm, QuestionForm
+from .forms import ResponseForm
 from django.shortcuts import render
 import json 
 from random import randint
@@ -37,11 +37,15 @@ def index(request, question_num=questions[0]):
     question = Question.objects.get(qid=question_num)
     is_multiple_choice = Question.objects.get(qid=question_num).is_multiple_choice
     allow_multiple = Question.objects.get(qid=question_num).allow_multiple
+    
+
     question_count = Question.objects.count()
     if request.method == 'POST':
         print("is POST")
-        form = ResponseForm(question.qid, request.POST)
-       
+        if allow_multiple:
+            form = ResponseForm(question.qid, allow_multiple, request.POST)
+        else:
+            form = ResponseForm(question.qid, False, request.POST)
         if form.is_valid():
             print("valid")
             alreadyExists = False
@@ -50,7 +54,7 @@ def index(request, question_num=questions[0]):
                     alreadyExists = True
                     r.response_text = form.cleaned_data['response_text']
                     r.save()
-                    
+            print(alreadyExists)
             if alreadyExists == False:
                 resp = Response(response_text = form.cleaned_data['response_text'], userID = request.session['userID'], qid=question)
                 resp.save()
@@ -65,8 +69,11 @@ def index(request, question_num=questions[0]):
             return HttpResponseRedirect('/survey/'+str(next)+'/')
 
     else:
-
-        form = ResponseForm(question.qid)
+        if allow_multiple:
+            request.session['num_selected'] = 0;
+            form = ResponseForm(question.qid, allow_multiple)
+        else:
+            form = ResponseForm(question.qid, allow_multiple)
 
         choice_list = Choice.objects.filter(qid=question_num).order_by('cid')
    
@@ -90,6 +97,7 @@ def index(request, question_num=questions[0]):
             'is_multiple_choice': is_multiple_choice,
             'form': form,
             'allow_multiple': allow_multiple,
+            
         }
    
     # Render the HTML template index.html with the data in the context variable
@@ -151,3 +159,10 @@ def charttest(request, q = 1):
         'q': q
         }
     return render(request, 'charttest.html', context = context)
+
+def update_session(request):
+    if not request.is_ajax() or not request.method=='POST':
+        return HttpResponseNotAllowed(['POST'])
+
+    request.session['num_selected'] = request.GET.get('num_selected', None)
+    return JsonResponse('ok')
