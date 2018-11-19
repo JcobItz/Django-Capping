@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import Survey, Question, Choice, Response
 from django.contrib.auth.models import Group
 from import_export.admin import ImportExportModelAdmin
+from django_globals import globals
 
 # Register your models here
 # admin.site.register(Survey) -- not needed for Linda's purposes...
@@ -25,6 +26,14 @@ class ChoiceTabularInline(admin.TabularInline):
               )
 #   js to hide choices inline
 
+class QuestionTabularInline(admin.TabularInline):
+    model = Question
+
+    list_display = ['question_text', 'is_multiple_choice', 'allow_multiple']
+    search_fields = ['question_text']
+
+    inlines = [ChoiceTabularInline]
+
 
 class QuestionAdmin(admin.ModelAdmin):
     list_display = ['question_text', 'is_multiple_choice']
@@ -42,9 +51,14 @@ class ChoiceAdmin(admin.ModelAdmin):
     search_fields = ['choice_text']
 
 
-admin.site.register(Choice, ChoiceAdmin)
 
 
+class SurveyAdmin(admin.ModelAdmin):
+    list_display = ['sid']
+    
+    inlines = [QuestionTabularInline]
+
+admin.site.register(Survey, SurveyAdmin)
 class ResponseAdmin(ImportExportModelAdmin):
     list_display = ['qid', 'response_text', 'userID', 'timestamp']
     list_filter = ['qid',]

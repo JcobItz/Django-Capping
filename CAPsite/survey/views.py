@@ -16,6 +16,7 @@ from chartjs.views.lines import BaseLineChartView
 questions =[]
 
 for x in Question.objects.all():
+    if(x.sid == settings)
     questions.append(x.qid)
 
 

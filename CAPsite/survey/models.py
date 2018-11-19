@@ -16,7 +16,7 @@ class Question(models.Model):
     allow_multiple = models.BooleanField(default=False, verbose_name='Allow multiple options to be selected?')
 
     class Meta:
-        verbose_name_plural = "1. Questions"
+        verbose_name_plural = "Questions"
 
     def __str__(self):
         return self.question_text
@@ -28,7 +28,7 @@ class Choice(models.Model):
     choice_text = models.CharField(max_length=200, verbose_name='Choice')
 
     class Meta:
-        verbose_name_plural = "2. Choices"
+        verbose_name_plural = "Choices"
 
     def __str__(self):
         return self.choice_text
@@ -42,7 +42,7 @@ class Response(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True, verbose_name='Timestamp')
 
     class Meta:
-        verbose_name_plural = "3. Responses"
+        verbose_name_plural = "Responses"
 
     def __str__(self):
         return self.response_text

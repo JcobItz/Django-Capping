@@ -6,11 +6,11 @@
     "\\CAPsite\\staticfiles",
     "\\CAPsite\\staticfiles\\admin",
     "\\CAPsite\\staticfiles\\admin\\css",
+    "\\CAPsite\\staticfiles\\admin\\js",
     "\\CAPsite\\survey",
-    "\\CAPsite\\survey\\templates",
-    "\\CAPsite\\templates",
-    "\\CAPsite\\templates\\admin"
+    "\\CAPsite\\survey\\migrations",
+    "\\CAPsite\\survey\\templates"
   ],
-  "SelectedNode": "\\CAPsite\\survey\\urls.py",
+  "SelectedNode": "\\CAPsite\\survey\\views.py",
   "PreviewInSolutionExplorer": false
 }

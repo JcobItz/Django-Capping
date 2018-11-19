@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -54,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_globals.middleware.Global',
 ]
 
 ROOT_URLCONF = 'CAPsite.urls'
@@ -134,3 +136,4 @@ STATIC_ROOT='/staticfiles/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "staticfiles"),
 ]
+DISPLAYED_SURVEY = 1
