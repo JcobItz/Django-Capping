@@ -17,6 +17,7 @@
             {% endfor %}
 
             {% elif is_multiple_choice == True and allow_multiple == True %}
+            <div class="msg">Select all that apply</div>
             {% for i in choice %}
             <div class="checkbox">
                 <input type="checkbox" id="checkbox-2{{i}}"name="response_text" value="{{i}}" unchecked>
