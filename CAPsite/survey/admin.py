@@ -4,6 +4,8 @@ from django.contrib.auth.models import Group
 from import_export.admin import ImportExportModelAdmin
 from django_globals import globals
 import nested_admin
+from import_export.formats import base_formats
+
 
 
 # Register your models here
@@ -66,6 +68,16 @@ class ChoiceAdmin(nested_admin.NestedModelAdmin):
 class ResponseAdmin(ImportExportModelAdmin):
     list_display = ['qid', 'response_text', 'userID', 'timestamp']
     list_filter = ['qid',]
+
+    def get_export_formats(self):
+            """
+            Returns available export formats.
+            """
+            formats = (
+                  base_formats.CSV,
+                  base_formats.XLS,
+            )
+            return [f for f in formats if f().can_export()]
 
     class Media:
         js = ('http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',
