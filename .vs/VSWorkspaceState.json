@@ -8,9 +8,9 @@
     "\\CAPsite\\staticfiles\\admin\\css",
     "\\CAPsite\\staticfiles\\admin\\js",
     "\\CAPsite\\survey",
-    "\\CAPsite\\survey\\migrations",
-    "\\CAPsite\\survey\\templates"
+    "\\CAPsite\\templates",
+    "\\CAPsite\\templates\\admin"
   ],
-  "SelectedNode": "\\CAPsite\\survey\\views.py",
+  "SelectedNode": "\\CAPsite\\templates\\admin\\base_site.html",
   "PreviewInSolutionExplorer": false
 }

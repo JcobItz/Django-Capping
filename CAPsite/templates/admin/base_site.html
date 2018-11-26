@@ -1,5 +1,7 @@
 {% extends "admin/base.html" %}
 {% load static %}
+{% load i18n static %}<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
 {% block extrastyle %}
 
 <link href="{% static 'admin/css/bootstrap-tour-standalone.min.css' %}" rel="stylesheet">
@@ -10,61 +12,82 @@
 <script src="{% static 'admin/js/jquery.min.js' %}"></script>
 <script src="{% static 'admin/js/bootstrap-tour-standalone.min.js' %}"></script>
 <script src="{% static 'admin/js/jquery-ui.min.js' %}"></script>
-<!--
+
 <script>
-    
-        
-    
+
+
+
     $(document).ready(function () {
-        var ret = confirm("Would you like to take the tour?");
-        if (ret == true) {
-            var tour = new Tour({
-                steps: [
-                    {
-                        element: ".app-auth",
-                        title: "Add Users",
-                        content: "To give someone else access to this admin dashboard, click the plus button next to Users. "
-                    },
-                    {
-                        element: ".model-question",
-                        title: "Alter the survey questions",
-                        content: "To add questions to the survey, click the Add button.  To edit questions, click the Change button."
-                    },
-                    {
-                        element: ".model-choice",
-                        title: "Add Choices",
-                        content: "You can add choices when you create a question, but if you want to add another choice after you have left the question creation screen, you can click the Add button next to choices.  This will bring you to a new screen and prompt you to select the question that you want to add choices to."
-                    },
-                ]
-            });
 
-            // Initialize the tour
-            tour.init();
+    });
+    function startTour() {
+        var l = $(location).attr('href');
+        var s = l.substr(l.length - 6, 6);
+        if (s == 'admin/') {
+            var ret = confirm("Would you like to take the tour?");
+            if (ret == true) {
+                var tour = new Tour({
+                    steps: [
+                        {
+                            element: ".app-auth",
+                            title: "Add Users",
+                            content: "To give someone else access to this admin dashboard, click the plus button next to Users. "
+                        },
+                        {
+                            element: ".model-question",
+                            title: "Alter the survey questions",
+                            content: "To add questions to the survey, click the Add button.  To edit questions, click the Change button."
+                        },
+                        {
+                            element: ".model-choice",
+                            title: "Add Choices",
+                            content: "You can add choices when you create a question, but if you want to add another choice after you have left the question creation screen, you can click the Add button next to choices.  This will bring you to a new screen and prompt you to select the question that you want to add choices to."
+                        },
+                    ]
+                });
 
-            // Start the tour
-            tour.start();
-            return true;
-        } else {
-            return false;
+                // Initialize the tour
+                tour.init();
+
+                // Start the tour
+                tour.start();
+                return true;
+            } else {
+                return false;
+            }
         }
-    }); 
+    }
 
 
 
 
 
 
+</script>
 
-</script>-->
 
 {% endblock %}
-{% block header %}
-<button type="button" onclick="start_tour()">Take the Tour</button>
+{% block userlinks %}
+                {% if site_url %}
+<a href="{{ site_url }}">{% trans 'View site' %}</a> /
+                {% endif %}
+                {% if user.is_active and user.is_staff %}
+                    {% url 'django-admindocs-docroot' as docsroot %}
+                    {% if docsroot %}
+<a href="{{ docsroot }}">{% trans 'Documentation' %}</a> /
+                    {% endif %}
+                {% endif %}
+                {% if user.has_usable_password %}
+<a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a> /
+                {% endif %}
+<a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a> /
+<a href="" onclick="startTour()">Take the Tour</a>
 {% endblock %}
-{% block title %}{{ title }} | {{ site_title|default:_('Dutchess CAP') }} {% endblock %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('CAP Dutchess') }} {% endblock %}
 
 {% block branding %}
-<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Dutchess CAP') }}</a></h1>
+<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('CAP Dutchess') }}</a></h1>
 {% endblock %}
 {% block content %}
 
