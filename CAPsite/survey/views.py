@@ -37,7 +37,6 @@ def index(request, question_num=questions[0]):
     question = Question.objects.get(qid=question_num)
     is_multiple_choice = Question.objects.get(qid=question_num).is_multiple_choice
     allow_multiple = Question.objects.get(qid=question_num).allow_multiple
-    
 
     question_count = Question.objects.count()
     if request.method == 'POST':

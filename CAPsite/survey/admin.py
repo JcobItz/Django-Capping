@@ -3,6 +3,10 @@ from .models import Survey, Question, Choice, Response
 from django.contrib.auth.models import Group
 from import_export.admin import ImportExportModelAdmin
 from django_globals import globals
+import nested_admin
+from import_export.formats import base_formats
+
+
 
 # Register your models here
 # admin.site.register(Survey) -- not needed for Linda's purposes...
@@ -17,7 +21,7 @@ admin.site.site_title = 'CAP Dutchess'
 admin.site.unregister(Group)
 
 
-class ChoiceTabularInline(admin.TabularInline):
+class ChoiceTabularInline(nested_admin.NestedTabularInline):
     model = Choice
 
     class Media:
@@ -26,7 +30,7 @@ class ChoiceTabularInline(admin.TabularInline):
               )
 #   js to hide choices inline
 
-class QuestionTabularInline(admin.TabularInline):
+class QuestionTabularInline(nested_admin.NestedTabularInline):
     model = Question
 
     list_display = ['question_text', 'is_multiple_choice', 'allow_multiple']
@@ -34,18 +38,25 @@ class QuestionTabularInline(admin.TabularInline):
 
     inlines = [ChoiceTabularInline]
 
+class SurveyAdmin(nested_admin.NestedModelAdmin):
+    list_display = ['sid']
+    
+    inlines = [QuestionTabularInline]
 
-class QuestionAdmin(admin.ModelAdmin):
+
+
+
+class QuestionAdmin(nested_admin.NestedModelAdmin):
     list_display = ['question_text', 'is_multiple_choice']
     search_fields = ['question_text']
     exclude = ('sid',)
     inlines = [ChoiceTabularInline]
 
 
-admin.site.register(Question, QuestionAdmin)
+# admin.site.register(Question, QuestionAdmin)
 
 
-class ChoiceAdmin(admin.ModelAdmin):
+class ChoiceAdmin(nested_admin.NestedModelAdmin):
     list_display = ['choice_text', 'qid']
     list_filter = ['qid']
     search_fields = ['choice_text']
@@ -53,15 +64,20 @@ class ChoiceAdmin(admin.ModelAdmin):
 
 
 
-class SurveyAdmin(admin.ModelAdmin):
-    list_display = ['sid']
-    
-    inlines = [QuestionTabularInline]
 
-admin.site.register(Survey, SurveyAdmin)
 class ResponseAdmin(ImportExportModelAdmin):
     list_display = ['qid', 'response_text', 'userID', 'timestamp']
     list_filter = ['qid',]
+
+    def get_export_formats(self):
+            """
+            Returns available export formats.
+            """
+            formats = (
+                  base_formats.CSV,
+                  base_formats.XLS,
+            )
+            return [f for f in formats if f().can_export()]
 
     class Media:
         js = ('http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',
@@ -73,7 +89,7 @@ class ResponseAdmin(ImportExportModelAdmin):
 
 
 admin.site.register(Response, ResponseAdmin)
-
+admin.site.register(Survey, SurveyAdmin)
 def admin(request):
     return render(request, 'admin/base.html', {})
 

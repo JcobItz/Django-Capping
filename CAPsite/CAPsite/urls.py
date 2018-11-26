@@ -43,6 +43,6 @@ urlpatterns += [
 # Add URL maps to redirect the base URL to our application
 urlpatterns += [
     path('', RedirectView.as_view(url='/survey/')),
-    
+    url(r'^nested_admin/', include('nested_admin.urls')),
 ]
 

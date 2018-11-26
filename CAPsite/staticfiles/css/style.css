@@ -36,6 +36,11 @@ body {
 #logo {
     position: relative;
 }
+.msg{
+    margin: auto 0;
+    color: red;
+    text-align: center;
+}
 ------------------------------------------------------------- */
 /* Animation from Animate.css
  ------------------------------------------------------------- */
