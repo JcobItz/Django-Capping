@@ -24,8 +24,6 @@
         var l = $(location).attr('href');
         var s = l.substr(l.length - 6, 6);
         if (s == 'admin/') {
-            var ret = confirm("Would you like to take the tour?");
-            if (ret == true) {
                 var tour = new Tour({
                     steps: [
                         {
@@ -34,15 +32,16 @@
                             content: "To give someone else access to this admin dashboard, click the plus button next to Users. "
                         },
                         {
-                            element: ".model-question",
+                            element: ".model-survey",
+                            title: "Add a survey",
+                            content: "You can add choices when you create a question, but if you want to add another choice after you have left the question creation screen, you can click the Add button next to choices.  This will bring you to a new screen and prompt you to select the question that you want to add choices to."
+                        },
+                        {
+                            element: ".model-survey",
                             title: "Alter the survey questions",
                             content: "To add questions to the survey, click the Add button.  To edit questions, click the Change button."
                         },
-                        {
-                            element: ".model-choice",
-                            title: "Add Choices",
-                            content: "You can add choices when you create a question, but if you want to add another choice after you have left the question creation screen, you can click the Add button next to choices.  This will bring you to a new screen and prompt you to select the question that you want to add choices to."
-                        },
+                        
                     ]
                 });
 
@@ -52,9 +51,7 @@
                 // Start the tour
                 tour.start();
                 return true;
-            } else {
-                return false;
-            }
+            
         }
     }
 
@@ -81,7 +78,7 @@
 <a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a> /
                 {% endif %}
 <a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a> /
-<a href="" onclick="startTour()">Take the Tour</a>
+<a onclick="startTour()">Take the Tour</a>
 {% endblock %}
 
 {% block title %}{{ title }} | {{ site_title|default:_('CAP Dutchess') }} {% endblock %}
@@ -94,5 +91,5 @@
 
 {% endblock %}
 
-{% block nav-global %}{% endblock %}
+
 
