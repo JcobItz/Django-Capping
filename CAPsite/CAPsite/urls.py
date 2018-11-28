@@ -37,7 +37,7 @@ from django.views.generic import RedirectView
 urlpatterns += [
     path('survey/', include('survey.urls')),
     path('about/', views.about, name='about'),
-   
+    path('submit/', views.submit, name='submit'),
 ]
 
 # Add URL maps to redirect the base URL to our application
