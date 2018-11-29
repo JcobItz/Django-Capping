@@ -29,7 +29,7 @@ def index(request, question_num=questions[0]):
         user = 0
         request.session['userID'] = 0
         for r in Response.objects.all():
-            print("loop")
+            
             if r.userID >= user:
                 user+=1
                 request.session['userID'] = user
@@ -42,9 +42,9 @@ def index(request, question_num=questions[0]):
     if request.method == 'POST':
         print("is POST")
         if allow_multiple:
-            form = ResponseForm(question.qid, allow_multiple, request.POST)
+            form = ResponseForm(question.qid, is_multiple_choice, allow_multiple, request.POST)
         else:
-            form = ResponseForm(question.qid, False, request.POST)
+            form = ResponseForm(question.qid, is_multiple_choice, False, request.POST)
         if form.is_valid():
             print("valid")
             alreadyExists = False
@@ -70,9 +70,9 @@ def index(request, question_num=questions[0]):
     else:
         if allow_multiple:
             request.session['num_selected'] = 0;
-            form = ResponseForm(question.qid, allow_multiple)
+            form = ResponseForm(question.qid, is_multiple_choice, allow_multiple)
         else:
-            form = ResponseForm(question.qid, allow_multiple)
+            form = ResponseForm(question.qid, is_multiple_choice, allow_multiple)
 
         choice_list = Choice.objects.filter(qid=question_num).order_by('cid')
    

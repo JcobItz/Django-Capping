@@ -40,7 +40,7 @@ class Response(models.Model):
     qid = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name='Question ID')
     response_text = models.CharField(max_length=200, verbose_name='Response')
     timestamp = models.DateTimeField(auto_now_add=True, verbose_name='Timestamp')
-    email = models.CharField(max_length=254, verbose_name='Email', default="")
+    #email = models.CharField(max_length=254, verbose_name='Email', default="")
 
     class Meta:
         verbose_name_plural = "Responses"

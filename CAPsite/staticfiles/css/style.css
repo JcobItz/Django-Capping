@@ -3,6 +3,7 @@ a {
     display: inline-block;
     padding: 8px 16px;
 }
+
 .webpage
 {
      margin: 0 auto;
@@ -261,6 +262,16 @@ input[type="radio"] {
         .radio input[type="radio"] + .radio-label:empty:before {
             margin-right: 0;
         }
+        #q_form{
+            
+            width: 100%;
+        }
+#id_response_text {
+    display: block;
+    margin: 0 auto;
+    width: 95%;
+    height: 50%;
+}
 
 .checkbox {
     margin: 0.5rem;
