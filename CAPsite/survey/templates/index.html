@@ -43,7 +43,8 @@
 
         <!--a radio button must be selected or a textbox must have text to proceed-->
         <a id="next" class="ourButtons" href="#" onclick="
-        if($('input:radio').is(':checked') || $('input:checkbox').is(':checked') || ($('input:text').val() && $('input:text').val().length > 0)) {
+        if($('input:radio').is(':checked') || $('input:checkbox').is(':checked') 
+           || ($('input:text').val() && $('input:text').val().length > 0) ||($('textarea#id_response_text').val() && $('textarea').val().length > 0)) {
             javascript:document.getElementById('q_form').submit();
         }
         else {
