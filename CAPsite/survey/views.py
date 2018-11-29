@@ -64,7 +64,7 @@ def index(request, question_num=questions[0]):
                     key = request.session.pop('userID')
                 except KeyError:
                     print('session still open')
-                return HttpResponse("Thank you for completing the survey")
+                return HttpResponseRedirect('/submit/')
             return HttpResponseRedirect('/survey/'+str(next)+'/')
 
     else:
@@ -110,9 +110,10 @@ def about(request):
     return render(request, 'about.html', context=context)
 
 
-
-
-
+def submit(request):
+    context = {
+    }
+    return render(request, 'submit.html', context=context)
 
 
 def charttest(request, q = 1):
