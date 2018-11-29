@@ -22,6 +22,7 @@ admin.site.unregister(Group)
 
 
 class ChoiceTabularInline(nested_admin.NestedTabularInline):
+    extra = 0
     model = Choice
 
     class Media:
@@ -31,6 +32,7 @@ class ChoiceTabularInline(nested_admin.NestedTabularInline):
 #   js to hide choices inline
 
 class QuestionTabularInline(nested_admin.NestedTabularInline):
+    extra=0
     model = Question
 
     list_display = ['question_text', 'is_multiple_choice', 'allow_multiple']
