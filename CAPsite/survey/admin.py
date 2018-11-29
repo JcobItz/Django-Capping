@@ -38,6 +38,13 @@ class QuestionTabularInline(nested_admin.NestedTabularInline):
 
     inlines = [ChoiceTabularInline]
 
+    class Media:
+        js = ('http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',
+              )
+
+
+#   js to hide choices inline
+
 class SurveyAdmin(nested_admin.NestedModelAdmin):
     list_display = ['sid']
     

@@ -1,0 +1,4 @@
+$(document).ready(function() {
+$('submit[name=_addanother]').hide();
+$('submit[name=_continue]').hide();
+});
