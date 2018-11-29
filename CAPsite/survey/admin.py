@@ -74,6 +74,7 @@ class ChoiceAdmin(nested_admin.NestedModelAdmin):
 
 class ResponseAdmin(ImportExportModelAdmin):
     list_display = ['qid', 'response_text', 'userID', 'timestamp']
+    list_per_page = 25
     list_filter = ['qid',]
 
     def get_export_formats(self):
