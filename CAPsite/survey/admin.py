@@ -69,9 +69,6 @@ class ChoiceAdmin(nested_admin.NestedModelAdmin):
     search_fields = ['choice_text']
 
 
-
-
-
 class ResponseAdmin(ImportExportModelAdmin):
     list_display = ['qid', 'response_text', 'userID', 'timestamp']
     list_per_page = 25
