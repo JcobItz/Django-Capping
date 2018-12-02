@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2018 at 10:38 PM
+-- Generation Time: Dec 02, 2018 at 11:36 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -239,7 +239,9 @@ CREATE TABLE `django_admin_log` (
 INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
 (1, '2018-12-02 21:12:22.656338', '1', 'Survey object (1)', 1, '[{\"added\": {}}]', 12, 1),
 (2, '2018-12-02 21:15:25.939637', '1', 'Survey object (1)', 2, '[{\"added\": {\"name\": \"question\", \"object\": \"What is your gender?\"}}, {\"added\": {\"name\": \"question\", \"object\": \"What City/Town do you live in?\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Male\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Female\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Other\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Poughkeepsie\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Pawling\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Fishkill\"}}]', 12, 1),
-(3, '2018-12-02 21:26:20.208114', '1', 'Survey object (1)', 2, '[{\"changed\": {\"fields\": [\"survey_name\"]}}, {\"added\": {\"name\": \"question\", \"object\": \"What is your gender?\"}}, {\"added\": {\"name\": \"question\", \"object\": \"What is your age range?\"}}, {\"added\": {\"name\": \"question\", \"object\": \"Which City/Town do you live in?\"}}, {\"added\": {\"name\": \"question\", \"object\": \"How would you describe your experience with CAP DC staff:\"}}, {\"added\": {\"name\": \"question\", \"object\": \"What language is spoken at home?\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Male\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Female\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Other\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"18-24\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"25-34\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"45-54\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"55+\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Poughkeepsie\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Rhinebeck\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Red Hook\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Pine Plains\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Millerton\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Pleasant Valley\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Millbrooke\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Wappingers Falls\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Fishkill\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Beacon\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Pawling\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Very Positive\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Positive\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Neutral\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Negative\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Very Negative\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"English\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Spanish\"}}]', 12, 1);
+(3, '2018-12-02 21:26:20.208114', '1', 'Survey object (1)', 2, '[{\"changed\": {\"fields\": [\"survey_name\"]}}, {\"added\": {\"name\": \"question\", \"object\": \"What is your gender?\"}}, {\"added\": {\"name\": \"question\", \"object\": \"What is your age range?\"}}, {\"added\": {\"name\": \"question\", \"object\": \"Which City/Town do you live in?\"}}, {\"added\": {\"name\": \"question\", \"object\": \"How would you describe your experience with CAP DC staff:\"}}, {\"added\": {\"name\": \"question\", \"object\": \"What language is spoken at home?\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Male\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Female\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Other\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"18-24\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"25-34\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"45-54\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"55+\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Poughkeepsie\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Rhinebeck\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Red Hook\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Pine Plains\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Millerton\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Pleasant Valley\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Millbrooke\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Wappingers Falls\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Fishkill\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Beacon\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Pawling\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Very Positive\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Positive\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Neutral\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Negative\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Very Negative\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"English\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Spanish\"}}]', 12, 1),
+(4, '2018-12-02 22:27:18.568345', '1', 'Survey object (1)', 2, '[{\"added\": {\"name\": \"question\", \"object\": \"What do you think the CAP DC staff does well?\"}}, {\"added\": {\"name\": \"question\", \"object\": \"Please provide suggestions on how CAP DC staff can improve their services.\"}}, {\"added\": {\"name\": \"question\", \"object\": \"What other services or resources would be helpful for you?\"}}, {\"added\": {\"name\": \"question\", \"object\": \"In your opinion, what are the major needs or problems facing you and other individuals and families in Dutchess County?\"}}, {\"added\": {\"name\": \"question\", \"object\": \"What other community agencies do you or people you know access when needing help/assistance, and has that experience been positive or negative?\"}}, {\"added\": {\"name\": \"question\", \"object\": \"In your opinion what are the best ways and places for CAP DC to advertise and share their services/resources?\"}}, {\"added\": {\"name\": \"question\", \"object\": \"Do you have any additional comments you would like us to consider?\"}}, {\"changed\": {\"name\": \"question\", \"object\": \"What language is spoken at home?\", \"fields\": [\"question_text\"]}}, {\"added\": {\"name\": \"choice\", \"object\": \"Community Outreach\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Support Clients/Assist in identifying and accessing services\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Benefits Assistance\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Housing/Rental Assistance\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Food Pantry\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Client Advocacy\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Weatherization\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Dress for Success\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"RSVP(Senior Volunteer Program)\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Accessing basic needs supports(SSI, DSS, Medicaid, Food, etc.)\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Securing employment and/or job training assistance\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Lack of affordable housing\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Lack of affordable day care\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Home energy expenses(home heating)/ access to energy efficiency programs\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Lack of transportation\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Access to quality youth programs/services\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Lack of support services for seniors\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Print: Brochures, Flyers, Postings\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Media: Newspaper, Radio, TV, E-Mail\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Social Media: Facebook, Twitter, etc.\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"At other agencies(DSS, SSA, other nonprofit agencies, etc.)\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Libraries\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Schools(public schools, colleges, etc.)\"}}, {\"added\": {\"name\": \"choice\", \"object\": \"Stores, Shopping Centers, Grocery Stores, etc.\"}}]', 12, 1),
+(5, '2018-12-02 22:29:27.437902', '1', 'Survey object (1)', 2, '[{\"changed\": {\"name\": \"question\", \"object\": \"In your opinion, what are the major needs or problems facing you and other individuals and families in Dutchess County?\", \"fields\": [\"allow_multiple\"]}}]', 12, 1);
 
 -- --------------------------------------------------------
 
@@ -332,7 +334,7 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('5igch9p93pherq4sk6y1qqkkteyirf7p', 'OWY5M2IwN2MwN2U4MGIzMmI3Njc2NmU3NDRlZjRmMDdkZjkyNDM2OTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJiYjViNTI3OTUzMjI5ZGNhOGQ4YjdhZmUxM2JkYTk4MzkxMmJhZTA0In0=', '2018-12-16 21:30:23.064456');
+('5igch9p93pherq4sk6y1qqkkteyirf7p', 'YjA5YzFiZWYxYjcwYjUyNDI4ZGZkODI4ZTBhNjNmODJmYjE4NGE1MTp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJiYjViNTI3OTUzMjI5ZGNhOGQ4YjdhZmUxM2JkYTk4MzkxMmJhZTA0IiwibnVtX3NlbGVjdGVkIjowfQ==', '2018-12-16 22:36:39.402699');
 
 -- --------------------------------------------------------
 
@@ -375,7 +377,31 @@ INSERT INTO `survey_choice` (`cid`, `choice_text`, `qid_id`) VALUES
 (22, 'Negative', 4),
 (23, 'Very Negative', 4),
 (24, 'English', 5),
-(25, 'Spanish', 5);
+(25, 'Spanish', 5),
+(26, 'Community Outreach', 6),
+(27, 'Support Clients/Assist in identifying and accessing services', 6),
+(28, 'Benefits Assistance', 6),
+(29, 'Housing/Rental Assistance', 6),
+(30, 'Food Pantry', 6),
+(31, 'Client Advocacy', 6),
+(32, 'Weatherization', 6),
+(33, 'Dress for Success', 6),
+(34, 'RSVP(Senior Volunteer Program)', 6),
+(35, 'Accessing basic needs supports(SSI, DSS, Medicaid, Food, etc.)', 9),
+(36, 'Securing employment and/or job training assistance', 9),
+(37, 'Lack of affordable housing', 9),
+(38, 'Lack of affordable day care', 9),
+(39, 'Home energy expenses(home heating)/ access to energy efficiency programs', 9),
+(40, 'Lack of transportation', 9),
+(41, 'Access to quality youth programs/services', 9),
+(42, 'Lack of support services for seniors', 9),
+(43, 'Print: Brochures, Flyers, Postings', 11),
+(44, 'Media: Newspaper, Radio, TV, E-Mail', 11),
+(45, 'Social Media: Facebook, Twitter, etc.', 11),
+(46, 'At other agencies(DSS, SSA, other nonprofit agencies, etc.)', 11),
+(47, 'Libraries', 11),
+(48, 'Schools(public schools, colleges, etc.)', 11),
+(49, 'Stores, Shopping Centers, Grocery Stores, etc.', 11);
 
 -- --------------------------------------------------------
 
@@ -413,7 +439,14 @@ INSERT INTO `survey_question` (`qid`, `question_num`, `question_text`, `is_multi
 (2, 2, 'What is your age range?', 1, 0, 0, 1),
 (3, 3, 'Which City/Town do you live in?', 1, 0, 0, 1),
 (4, 4, 'How would you describe your experience with CAP DC staff:', 1, 0, 1, 1),
-(5, 5, 'What language is spoken at home?', 1, 0, 1, 1);
+(5, 5, 'What is the primary language spoken at home?', 1, 0, 1, 1),
+(6, 6, 'What do you think the CAP DC staff does well?', 1, 1, 1, 1),
+(7, 7, 'Please provide suggestions on how CAP DC staff can improve their services.', 0, 0, 0, 1),
+(8, 8, 'What other services or resources would be helpful for you?', 0, 0, 0, 1),
+(9, 9, 'In your opinion, what are the major needs or problems facing you and other individuals and families in Dutchess County?', 1, 1, 0, 1),
+(10, 10, 'What other community agencies do you or people you know access when needing help/assistance, and has that experience been positive or negative?', 0, 0, 0, 1),
+(11, 11, 'In your opinion what are the best ways and places for CAP DC to advertise and share their services/resources?', 1, 1, 1, 1),
+(12, 12, 'Do you have any additional comments you would like us to consider?', 0, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -429,6 +462,48 @@ CREATE TABLE `survey_response` (
   `qid_id` int(11) NOT NULL,
   `sid_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `survey_response`
+--
+
+INSERT INTO `survey_response` (`rid`, `userID`, `response_text`, `timestamp`, `qid_id`, `sid_id`) VALUES
+(1, 0, 'Male', '2018-12-02 22:27:43.769630', 1, 1),
+(2, 0, '25-34', '2018-12-02 22:27:45.765027', 2, 1),
+(3, 0, 'Red Hook', '2018-12-02 22:27:48.407031', 3, 1),
+(4, 0, 'Positive', '2018-12-02 22:27:50.988557', 4, 1),
+(5, 0, 'English', '2018-12-02 22:27:59.005658', 5, 1),
+(6, 0, '[\'Support Clients/Assist in identifying and accessing services\', \'Benefits Assistance\', \'Housing/Rental Assistance\', \'Weatherization\', \'Dress for Success\']', '2018-12-02 22:28:05.396717', 6, 1),
+(7, 0, 'Helpful Suggestion', '2018-12-02 22:28:18.489136', 7, 1),
+(8, 0, 'good idea', '2018-12-02 22:28:29.747180', 8, 1),
+(9, 0, '[\'Accessing basic needs supports(SSI, DSS, Medicaid, Food, etc.)\', \'Securing employment and/or job training assistance\', \'Lack of affordable housing\', \'Lack of affordable day care\']', '2018-12-02 22:32:13.566769', 9, 1),
+(10, 0, 'jajnskjdnakjsd', '2018-12-02 22:32:30.251806', 10, 1),
+(11, 0, '[\'Print: Brochures, Flyers, Postings\', \'Media: Newspaper, Radio, TV, E-Mail\', \'Social Media: Facebook, Twitter, etc.\']', '2018-12-02 22:32:34.550580', 11, 1),
+(12, 0, 'asdasd', '2018-12-02 22:32:37.749470', 12, 1),
+(13, 1, 'Female', '2018-12-02 22:32:55.567484', 1, 1),
+(14, 1, '25-34', '2018-12-02 22:32:58.362814', 2, 1),
+(15, 1, 'Rhinebeck', '2018-12-02 22:33:02.461830', 3, 1),
+(16, 1, 'Positive', '2018-12-02 22:33:05.377230', 4, 1),
+(17, 1, 'English', '2018-12-02 22:33:07.770310', 5, 1),
+(18, 1, '[\'Community Outreach\', \'Support Clients/Assist in identifying and accessing services\', \'Benefits Assistance\']', '2018-12-02 22:33:11.408339', 6, 1),
+(19, 1, 'suuggestion', '2018-12-02 22:33:19.806173', 7, 1),
+(20, 1, 'other suggestion', '2018-12-02 22:33:25.906947', 8, 1),
+(21, 1, '[\'Home energy expenses(home heating)/ access to energy efficiency programs\', \'Lack of transportation\']', '2018-12-02 22:33:29.426919', 9, 1),
+(22, 1, 'kjnsdljnfsdf', '2018-12-02 22:33:33.920682', 10, 1),
+(23, 1, '[\'Print: Brochures, Flyers, Postings\', \'Media: Newspaper, Radio, TV, E-Mail\', \'Stores, Shopping Centers, Grocery Stores, etc.\', \'At the Gym\']', '2018-12-02 22:33:43.796249', 11, 1),
+(24, 1, 'sdasd', '2018-12-02 22:33:47.799159', 12, 1),
+(25, 2, 'Other', '2018-12-02 22:35:27.656556', 1, 1),
+(26, 2, '18-24', '2018-12-02 22:35:30.279083', 2, 1),
+(27, 2, 'Fishkill', '2018-12-02 22:35:34.181638', 3, 1),
+(28, 2, 'Very Positive', '2018-12-02 22:35:36.751725', 4, 1),
+(29, 2, 'Portuguese', '2018-12-02 22:35:54.850081', 5, 1),
+(30, 2, '[\'Community Outreach\', \'Support Clients/Assist in identifying and accessing services\', \'Benefits Assistance\', \'Housing/Rental Assistance\', \'RSVP(Senior Volunteer Program)\']', '2018-12-02 22:36:00.467381', 6, 1),
+(31, 2, 'Helpful suggestion', '2018-12-02 22:36:07.039672', 7, 1),
+(32, 2, 'ANother one', '2018-12-02 22:36:11.720825', 8, 1),
+(33, 2, '[\'Accessing basic needs supports(SSI, DSS, Medicaid, Food, etc.)\', \'Securing employment and/or job training assistance\', \'Lack of affordable housing\']', '2018-12-02 22:36:15.389113', 9, 1),
+(34, 2, 'asdasdasdasd', '2018-12-02 22:36:18.941000', 10, 1),
+(35, 2, '[\'Print: Brochures, Flyers, Postings\', \'Social Media: Facebook, Twitter, etc.\', \'Libraries\', \'Schools(public schools, colleges, etc.)\', \'On local bulletin boards\']', '2018-12-02 22:36:34.990113', 11, 1),
+(36, 2, 'nope', '2018-12-02 22:36:39.394715', 12, 1);
 
 -- --------------------------------------------------------
 
@@ -615,7 +690,7 @@ ALTER TABLE `auth_user_user_permissions`
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `django_content_type`
@@ -633,7 +708,7 @@ ALTER TABLE `django_migrations`
 -- AUTO_INCREMENT for table `survey_choice`
 --
 ALTER TABLE `survey_choice`
-  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `survey_email`
@@ -645,13 +720,13 @@ ALTER TABLE `survey_email`
 -- AUTO_INCREMENT for table `survey_question`
 --
 ALTER TABLE `survey_question`
-  MODIFY `qid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `qid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `survey_response`
 --
 ALTER TABLE `survey_response`
-  MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `survey_survey`
