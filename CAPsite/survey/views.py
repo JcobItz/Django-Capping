@@ -19,7 +19,7 @@ for x in Question.objects.all():
     questions.append(x.qid)
 
 
-def index(request, question_num=questions[0]):
+def index(request, question_num=1):
     """View function for home page of site."""
     # Keeps track of what question user is on
     # Counts total number of questions stored in database
@@ -56,7 +56,7 @@ def index(request, question_num=questions[0]):
                     r.save()
             print(alreadyExists)
             if alreadyExists == False:
-                resp = Response(response_text = form.cleaned_data['response_text'], userID = request.session['userID'], qid=question)
+                resp = Response(response_text = form.cleaned_data['response_text'], userID = request.session['userID'], qid=question, sid=Survey.objects.get(sid=1))
                 resp.save()
             next = question_num+1
             if question_num == question_count:
