@@ -11,19 +11,35 @@
             {% if is_multiple_choice == True and allow_multiple == False %}
             {% for i in choice %}
             <div class="radio">
-                <input type="radio" id="radio-2{{i}}"name="response_text" value="{{i}}" unchecked>
+                <input type="radio" id="radio-2{{i}}" name="response_text" value="{{i}}" unchecked>
                 <label for="radio-2{{i}}" class="radio-label">{{i}}</label>
             </div>
+
             {% endfor %}
+            {% if allow_other == True %}
+            <div class="radio">
+                <input type="radio" id="radio-other" name="response_text" value="other" unchecked>
+                <label for="radio-other" class="radio-label">Other:</label>
+                <input type="text" id="other-text" name="other_value">
+            </div>
+            {% endif %}
 
             {% elif is_multiple_choice == True and allow_multiple == True %}
             <div class="msg">Select all that apply</div>
             {% for i in choice %}
             <div class="checkbox">
-                <input type="checkbox" id="checkbox-2{{i}}"name="response_text" value="{{i}}" unchecked>
+                <input type="checkbox" id="checkbox-2{{i}}" name="response_text" value="{{i}}" unchecked>
                 <label for="checkbox-2{{i}}" class="checkbox-label">{{i}}</label>
             </div>
             {% endfor %}
+            {% if allow_other == True %}
+            <div class="radio">
+                <input type="radio" id="radio-other" name="response_text" value="other" unchecked>
+                <label for="radio-other" class="radio-label">Other:</label>
+                <input type="text" id="other-text" name="other_value">
+            </div>
+            {% endif %}
+
             {% else %}
 
             {{form}}
@@ -54,6 +70,17 @@
 
         </div>
         <script>
+            $(document).ready(function () {
+                $('#other-text').change(function () {
+                    if ($('#radio-other').is(':checked')) {
+                        $('#radio-other').val($('#other-text').val());
+                    }
+                });
+                $('#radio-other').change(function () {
+                    $(this).val($('#other-text').val());
+                });
+            });
+
             function update_session() {
                 var num_selected = $(":checkbox:checked").length;
                 $.ajax({

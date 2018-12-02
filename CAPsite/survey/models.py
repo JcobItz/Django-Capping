@@ -14,6 +14,7 @@ class Question(models.Model):
     question_text = models.CharField(max_length=200, verbose_name='Question')
     is_multiple_choice = models.BooleanField(default=True, verbose_name='Is the question multiple choice?')
     allow_multiple = models.BooleanField(default=False, verbose_name='Allow multiple options to be selected?')
+    allow_other = models.BooleanField(default=False, verbose_name='Allow users to enter their own choice?')
 
     class Meta:
         verbose_name_plural = "Questions"

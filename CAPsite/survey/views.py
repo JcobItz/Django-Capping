@@ -37,6 +37,7 @@ def index(request, question_num=questions[0]):
     question = Question.objects.get(qid=question_num)
     is_multiple_choice = Question.objects.get(qid=question_num).is_multiple_choice
     allow_multiple = Question.objects.get(qid=question_num).allow_multiple
+    allow_other = Question.objects.get(qid=question_num).allow_other
 
     question_count = Question.objects.count()
     if request.method == 'POST':
@@ -96,6 +97,7 @@ def index(request, question_num=questions[0]):
             'is_multiple_choice': is_multiple_choice,
             'form': form,
             'allow_multiple': allow_multiple,
+            'allow_other': allow_other,
             
         }
    
@@ -129,12 +131,29 @@ def charttest(request, q = 1):
     
     
     for i in Response.objects.filter(qid = q):
-        if i.response_text in dict:
+        if "[" in i.response_text:
+            print("[]")
+            i.response_text = i.response_text.replace("[", "")
+            i.response_text = i.response_text.replace("]","")
+            ans = i.response_text.split(", ")
             
-            dict[i.response_text] += 1
-            
+            for j in ans:
+                j = j.strip("\'")
+                print(j)
+                if j in dict:
+                    print("we got it in")
+                    dict[j] += 1;
+
+
+
         else:
-            continue
+            if i.response_text in dict:
+            
+                dict[i.response_text] += 1
+        
+
+            else:
+                continue
     freq = []
     for r in dict:
         freq.append(0)

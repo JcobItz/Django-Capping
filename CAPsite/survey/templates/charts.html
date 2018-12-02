@@ -11,6 +11,7 @@
     var qid;
     var cs = {{ choices }};
     var resps = {};
+    var feqs = {};
     var responses = {{ responses }};
     var num_responses = {{ responses| length}};
     $(document).ready(function () {
@@ -27,8 +28,17 @@
                 }
             }
             for (var i = 0; i < responses.length; i++) {
-                if (responses.qid == qid) {
-                    for (var j = 0; j < resps.length; i++) {
+                if (responses[i].qid == qid) {
+                    if (Array.isArray(responses[i].response_text)) {
+                        for (var ind = 0; ind < responses[i].response_text.length; ind++) {
+                            for (var jint = 0; jint < resps.length; jint++) {
+                                if (resps[jint].key == responses[i].repsonse_text[ind]) {
+                                    resps[jint][key] += 1;
+                                }
+                            }
+                        }
+                    }
+                    for (var j = 0; j < resps.length; j++) {
                         if (resps[j].key == responses[i].response_text) {
                             resps[j][key] += 1;
                         }
@@ -39,15 +49,28 @@
 
         });
     });
+    // based on prepared DOM, initialize echarts instance
+    var myChart = echarts.init(document.getElementById('main'));
+    
 
+    // specify chart configuration item and data
+    var option = {
+
+        tooltip: {},
+        legend: {
+            data: c
+        },
+
+        series: [{
+
+            type: 'pie',
+            data: resps
+        }]
+    };
+
+    // use configuration item and data specified to show chart
+    myChart.setOption(option);
    
-    var answers = new Array(questions.length);
-    for (var i = 0; i < answers.length; i++) {
-        answers[i] = {}
-    }
-    for (var i = 0; i < num_responses; i++) {
-
-    }
 
 
 </script>

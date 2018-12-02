@@ -164,6 +164,8 @@ body {
     opacity: 0;
     width: 600px;
     text-align: center;
+    height: 80%;
+    
 }
 
 /* Individual Controls
@@ -271,6 +273,12 @@ input[type="radio"] {
     margin: 0 auto;
     width: 95%;
     height: 50%;
+}
+#question_select{
+    width: 100%;
+}
+#main{
+    height: 80%;
 }
 
 .checkbox {
