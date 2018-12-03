@@ -19,7 +19,7 @@ for x in Question.objects.all():
     questions.append(x.qid)
 
 
-def index(request, question_num=1):
+def index(request, question_num):
     """View function for home page of site."""
     # Keeps track of what question user is on
     # Counts total number of questions stored in database
@@ -34,10 +34,10 @@ def index(request, question_num=1):
                 user+=1
                 request.session['userID'] = user
     
-    question = Question.objects.get(qid=question_num)
-    is_multiple_choice = Question.objects.get(qid=question_num).is_multiple_choice
-    allow_multiple = Question.objects.get(qid=question_num).allow_multiple
-    allow_other = Question.objects.get(qid=question_num).allow_other
+    question = Question.objects.get(question_num=question_num, sid=Survey.objects.get(sid=1))
+    is_multiple_choice =question.is_multiple_choice
+    allow_multiple = question.allow_multiple
+    allow_other = question.allow_other
 
     question_count = Question.objects.count()
     if request.method == 'POST':
@@ -75,7 +75,7 @@ def index(request, question_num=1):
         else:
             form = ResponseForm(question.qid, is_multiple_choice, allow_multiple)
 
-        choice_list = Choice.objects.filter(qid=question_num).order_by('cid')
+        choice_list = Choice.objects.filter(qid=question).order_by('cid')
    
         # for debugging purposes
         print(question_count)

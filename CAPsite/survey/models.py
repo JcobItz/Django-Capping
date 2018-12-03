@@ -41,7 +41,7 @@ class Response(models.Model):
     sid = models.ForeignKey(Survey, on_delete=models.CASCADE, verbose_name='Survey ID')
     userID = models.IntegerField(default=1, verbose_name='User ID')
     qid = models.ForeignKey(Question, on_delete=models.CASCADE, verbose_name='Question ID')
-    response_text = models.CharField(max_length=200, verbose_name='Response')
+    response_text = models.CharField(max_length=1000, verbose_name='Response')
     timestamp = models.DateTimeField(auto_now_add=True, verbose_name='Timestamp')
     
 
