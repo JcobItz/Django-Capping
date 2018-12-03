@@ -7,5 +7,4 @@ urlpatterns = [
     path('submit/', views.submit, name='submit'),
     path('admin/charts/<int:q>/', views.charttest, name='charttest'),
     path('ajax/update_session/', views.update_session, name='update_session'),
-    
 ]

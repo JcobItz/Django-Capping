@@ -34,7 +34,7 @@ def index(request, question_num=1):
                 user+=1
                 request.session['userID'] = user
     
-    question = Question.objects.get(question_num=question_num, sid=Survey.objects.get(sid=1))
+    question = Question.objects.get(qid=question_num)
     is_multiple_choice = Question.objects.get(qid=question_num).is_multiple_choice
     allow_multiple = Question.objects.get(qid=question_num).allow_multiple
     allow_other = Question.objects.get(qid=question_num).allow_other
@@ -75,7 +75,7 @@ def index(request, question_num=1):
         else:
             form = ResponseForm(question.qid, is_multiple_choice, allow_multiple)
 
-        choice_list = Choice.objects.filter(qid=question).order_by('cid')
+        choice_list = Choice.objects.filter(qid=question_num).order_by('cid')
    
         # for debugging purposes
         print(question_count)
