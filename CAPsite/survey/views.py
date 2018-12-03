@@ -19,7 +19,7 @@ for x in Question.objects.all():
     questions.append(x.qid)
 
 
-def index(request, question_num=1, survey_id=1):
+def index(request, question_num=1):
     """View function for home page of site."""
     # Keeps track of what question user is on
     # Counts total number of questions stored in database
@@ -34,7 +34,7 @@ def index(request, question_num=1, survey_id=1):
                 user+=1
                 request.session['userID'] = user
     
-    question = Question.objects.get(question_num=question_num, sid=Survey.objects.get(sid=survey_id))
+    question = Question.objects.get(question_num=question_num, sid=Survey.objects.get(sid=1))
     is_multiple_choice = Question.objects.get(qid=question_num).is_multiple_choice
     allow_multiple = Question.objects.get(qid=question_num).allow_multiple
     allow_other = Question.objects.get(qid=question_num).allow_other
@@ -98,7 +98,7 @@ def index(request, question_num=1, survey_id=1):
             'form': form,
             'allow_multiple': allow_multiple,
             'allow_other': allow_other,
-            'survey_id': survey_id,
+            
         }
    
     # Render the HTML template index.html with the data in the context variable

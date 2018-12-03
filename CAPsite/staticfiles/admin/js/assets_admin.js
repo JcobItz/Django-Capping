@@ -19,9 +19,7 @@ $('[name=_continue]').hide();
 $("td.djn-td.field-is_multiple_choice").append("Is the question multiple choice?");
 $("td.djn-td.field-allow_multiple").append("Allow multiple options to be selected?");
 $("td.delete.djn-delete-handler.djn-model-survey-question").append("Delete question?");
-$("td.djn-td.field-question_num").prepend("Question number:")
 $("td.djn-td.field-question_text").prepend("Question text:");
-$("td.djn-td.field-allow_other").append("Allow users to enter their own choice?")
 $("th.djn-th.question.required").hide();
 $("th.djn-th.is-the-question-multiple-choice").hide();
 $("th.djn-th.allow-multiple-options-to-be-selected").hide();
