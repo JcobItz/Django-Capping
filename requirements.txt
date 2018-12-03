@@ -14,7 +14,6 @@ django-flat-theme==1.1.4
 django-globals==0.3.2
 django-import-export==1.1.0
 django-jsonfield==1.0.1
-django-nested-admin
 django-nvd3==0.9.7
 django-qsstats-magic==1.0.0
 django-six==1.0.4
