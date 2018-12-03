@@ -4,7 +4,7 @@
 <h1>Dutchess Cap Survey</h1>
     <div class="card">
         <div class="question"><strong id="quest">Question {{question_num}}: </strong>{{question}}<br></div>
-        <form id="q_form" action="/survey/{{question_num}}/" method="POST" onsubmit="update_session()">
+        <form id="q_form" action="/survey/{{survey_num}}/{{question_num}}/" method="POST" onsubmit="update_session()">
             {% csrf_token %}
 
 

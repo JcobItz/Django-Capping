@@ -13,13 +13,11 @@ from random import randint
 from django.views.generic import TemplateView
 from chartjs.views.lines import BaseLineChartView
 
-questions =[]
-
-for x in Question.objects.all():
-    questions.append(x.qid)
 
 
-def index(request, question_num):
+
+
+def index(request, survey_id, question_num):
     """View function for home page of site."""
     # Keeps track of what question user is on
     # Counts total number of questions stored in database
@@ -34,12 +32,12 @@ def index(request, question_num):
                 user+=1
                 request.session['userID'] = user
     
-    question = Question.objects.get(question_num=question_num, sid=Survey.objects.get(sid=1))
+    question = Question.objects.get(question_num=question_num, sid=Survey.objects.get(sid=survey_id))
     is_multiple_choice =question.is_multiple_choice
     allow_multiple = question.allow_multiple
     allow_other = question.allow_other
 
-    question_count = Question.objects.count()
+    question_count = Question.objects.filter(sid=survey_id).count()
     if request.method == 'POST':
         print("is POST")
         if allow_multiple:
@@ -56,7 +54,7 @@ def index(request, question_num):
                     r.save()
             print(alreadyExists)
             if alreadyExists == False:
-                resp = Response(response_text = form.cleaned_data['response_text'], userID = request.session['userID'], qid=question, sid=Survey.objects.get(sid=1))
+                resp = Response(response_text = form.cleaned_data['response_text'], userID = request.session['userID'], qid=question, sid=Survey.objects.get(sid=survey_id))
                 resp.save()
             next = question_num+1
             if question_num == question_count:
@@ -66,7 +64,7 @@ def index(request, question_num):
                 except KeyError:
                     print('session still open')
                 return HttpResponseRedirect('/submit/')
-            return HttpResponseRedirect('/survey/'+str(next)+'/')
+            return HttpResponseRedirect('/survey/' +str(survey_id) + '/' +str(next)+'/')
 
     else:
         if allow_multiple:
@@ -98,6 +96,7 @@ def index(request, question_num):
             'form': form,
             'allow_multiple': allow_multiple,
             'allow_other': allow_other,
+            'survey_num':survey_id,
             
         }
    

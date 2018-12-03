@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Survey, Question, Choice, Response
+from .models import Survey, Question, Choice, Response, Email
 
 
 class ResponseForm(forms.ModelForm):
@@ -17,4 +17,7 @@ class ResponseForm(forms.ModelForm):
                 self.fields['response_text'].widget = forms.CheckboxSelectMultiple()
         else:
             self.fields['response_text'] = forms.CharField(widget=forms.Textarea, label='')
-
+class EmailForm(forms.ModelForm):
+    class Meta:
+        model = Email
+        fields = ['email']
