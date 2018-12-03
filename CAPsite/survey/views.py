@@ -4,9 +4,9 @@ from django.http import JsonResponse, HttpResponseNotAllowed
 from django.core import serializers
 
 # Create your views here.
-from .models import Survey, Question, Choice, Response
+from .models import Survey, Question, Choice, Response, Email
 
-from .forms import ResponseForm
+from .forms import ResponseForm, EmailForm
 from django.shortcuts import render
 import json 
 from random import randint
@@ -112,7 +112,15 @@ def about(request):
 
 
 def submit(request):
+    if request.method=='POST':
+        form = EmailForm(request.POST)
+        if form.is_valid():
+            email = Email(email=form.cleaned_data['email'])
+            email.save()
+    else:
+        form = EmailForm()
     context = {
+        'form': form,
     }
     return render(request, 'submit.html', context=context)
 
