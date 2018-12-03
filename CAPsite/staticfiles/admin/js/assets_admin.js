@@ -13,7 +13,6 @@ if($("#id_is_multiple_choice").is(':checked'))
         console.log('hiding element');
     }
 });
-console.log("testing is working");
 $('[name=_addanother]').hide();
 $('[name=_continue]').hide();
 $("p.deletelink-box").hide();

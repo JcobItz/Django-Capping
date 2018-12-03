@@ -51,6 +51,7 @@ class Response(models.Model):
     def __str__(self):
         return self.response_text
 
+
 class Email(models.Model):
     eid = models.AutoField(primary_key=True, verbose_name='Email ID')
     email = models.EmailField(max_length=254)

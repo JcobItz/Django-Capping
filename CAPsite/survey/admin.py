@@ -48,7 +48,7 @@ class QuestionTabularInline(nested_admin.NestedTabularInline):
 #   js to hide choices inline
 
 class SurveyAdmin(nested_admin.NestedModelAdmin):
-    list_display = ['sid']
+    list_display = ['survey_name']
     
     inlines = [QuestionTabularInline]
 
