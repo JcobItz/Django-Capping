@@ -50,7 +50,7 @@
         <a class="ourButtons" id="previous" href="
 
            {% if question_num > 1 %}
-            {% url 'index' survey_id=survey_id|add:0 question_num=question_num|add:-1 %}
+            /survey/{{survey_num}}/{{question_num| add:-1}}/
             {% else %}
             {% url 'index' question_num=1 %}
             {% endif %}"
