@@ -1,4 +1,4 @@
-# Dutchess CAP Survey System
+# Django Survey Creator
 
 Using the admin interface you can create surveys, add questions of various types and give questions choices. The front-end survey view then automatically populates based on the questions that have been defined in the admin interface.
 
