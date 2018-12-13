@@ -9,6 +9,7 @@ class ResponseForm(forms.ModelForm):
         model = Response
         fields = ['response_text']
 
+    # survey submission form
     def __init__(self, qnum, multiple_choice, allow_multiple, *args, **kwargs):
         super(ResponseForm, self).__init__(*args, **kwargs)
         self.fields['response_text'].queryset = Choice.objects.filter(qid=qnum)
@@ -17,6 +18,9 @@ class ResponseForm(forms.ModelForm):
                 self.fields['response_text'].widget = forms.CheckboxSelectMultiple()
         else:
             self.fields['response_text'] = forms.CharField(widget=forms.Textarea, label='')
+
+
+# email submission form
 class EmailForm(forms.ModelForm):
     class Meta:
         model = Email

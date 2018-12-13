@@ -14,9 +14,6 @@ from django.views.generic import TemplateView
 from chartjs.views.lines import BaseLineChartView
 
 
-
-
-
 def index(request, survey_id, question_num):
     """View function for home page of site."""
     # Keeps track of what question user is on
@@ -79,7 +76,6 @@ def index(request, survey_id, question_num):
         print(question_count)
         print(question_num)
         print(is_multiple_choice)
-        #print(request.session['userID'])
         # Array to store choices
         choice = []
 
@@ -126,17 +122,14 @@ def submit(request):
 
 
 def charttest(request, q = 1):
-    #form = QuestionForm()
     choices = []
     for c in Choice.objects.filter(qid = q):
         choices.append(c.choice_text)
-        
-      
+
     dict = {}
     for i in choices:
         dict[i] = 0
-    
-    
+
     for i in Response.objects.filter(qid = q):
         if "[" in i.response_text:
             print("[]")
@@ -150,14 +143,10 @@ def charttest(request, q = 1):
                 if j in dict:
                     print("we got it in")
                     dict[j] += 1;
-
-
-
         else:
             if i.response_text in dict:
             
                 dict[i.response_text] += 1
-        
 
             else:
                 continue
@@ -181,10 +170,10 @@ def charttest(request, q = 1):
         'freq': freq,
         'questions': questions,
         'qids': qids,
-        #'form': form,
         'q': q
         }
     return render(request, 'charttest.html', context = context)
+
 
 def update_session(request):
     if not request.is_ajax() or not request.method=='POST':

@@ -1,5 +1,5 @@
 from django.db import models
-
+# a representation of our database in Python
 
 class Survey(models.Model):
     sid = models.AutoField(primary_key=True, verbose_name='Survey ID')

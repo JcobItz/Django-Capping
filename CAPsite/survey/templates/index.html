@@ -7,15 +7,15 @@
         <form id="q_form" action="/survey/{{survey_num}}/{{question_num}}/" method="POST" onsubmit="update_session()">
             {% csrf_token %}
 
-
+            <!--generate choices for single select mult. choice-->
             {% if is_multiple_choice == True and allow_multiple == False %}
             {% for i in choice %}
             <div class="radio">
                 <input type="radio" id="radio-2{{i}}" name="response_text" value="{{i}}" unchecked>
                 <label for="radio-2{{i}}" class="radio-label">{{i}}</label>
             </div>
-
             {% endfor %}
+            <!--generate choices for mult. choice with other option-->
             {% if allow_other == True %}
             <div class="radio">
                 <input type="radio" id="radio-other" name="response_text" value="other" unchecked>
@@ -23,7 +23,7 @@
                 <input type="text" id="other-text" name="other_value">
             </div>
             {% endif %}
-
+            <!--generate choices for select multiple mult. choice-->
             {% elif is_multiple_choice == True and allow_multiple == True %}
             <div class="msg">Select all that apply</div>
             {% for i in choice %}

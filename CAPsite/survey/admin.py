@@ -29,10 +29,11 @@ class ChoiceTabularInline(nested_admin.NestedTabularInline):
         js = ('http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',
               '/staticfiles/admin/js/assets_admin.js',
               )
-#   js to hide choices inline
+#   js to hide choices inline referenced in assets_admin.js
+
 
 class QuestionTabularInline(nested_admin.NestedTabularInline):
-    extra=0
+    extra = 0
     model = Question
 
     list_display = ['question_text', 'is_multiple_choice', 'allow_multiple']
@@ -51,8 +52,6 @@ class SurveyAdmin(nested_admin.NestedModelAdmin):
     list_display = ['survey_name']
     
     inlines = [QuestionTabularInline]
-
-
 
 
 class QuestionAdmin(nested_admin.NestedModelAdmin):
@@ -97,6 +96,8 @@ class ResponseAdmin(ImportExportModelAdmin):
 
 admin.site.register(Response, ResponseAdmin)
 admin.site.register(Survey, SurveyAdmin)
+
+
 def admin(request):
     return render(request, 'admin/base.html', {})
 
