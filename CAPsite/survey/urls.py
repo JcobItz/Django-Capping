@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-
+#urls specific to survey app
 urlpatterns = [
     path('<int:question_num>/', views.index, name='index'),
     path('<int:survey_id>/<int:question_num>/', views.index, name='index'),
